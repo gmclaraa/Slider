@@ -1,0 +1,469 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #eee;
+    font-size: 12px;
+}
+
+header {
+    width: 80%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    margin: auto;
+}
+
+header a {
+    color: #eee;
+    margin-right: 40px;
+    font-weight: 300;
+}
+
+.container {
+    height: 100vh;
+    width: 100%;
+    margin-top: -50px;
+    overflow: hidden;
+    position: relative;
+}
+
+.lista-item {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+}
+
+.lista-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(50%);
+}
+
+.conteudo {
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    padding-right: 30%;
+    width: 80%;
+    color: #eee;
+    text-shadow: 0 5px 10px #0004;
+}
+
+.titulo {
+    font-size: 5em;
+    font-weight: 700;
+    line-height: 1.3em;
+}
+
+.descricao {
+    font-size: 1.5em;
+}
+
+.botoes {
+    display: grid;
+    grid-template-columns: repeat(2, 130px);
+    grid-template-rows: 50px;
+    margin-top: 30px;
+    gap: 5px;
+}
+
+.botoes button {
+    border: none;
+    background-color: #eee;
+    letter-spacing: 3px;
+    font-weight: 500;
+    cursor: pointer;
+    text-transform: uppercase;
+     border-radius: 5px;
+}
+
+.botoes button:nth-child(2) {
+    background-color: transparent;
+    border: 1px solid #eee;
+    color: #eee;
+}
+
+.botoes button:hover {
+    background-color: transparent;
+    border: 1px solid #eee;
+    color: #eee;
+    transition: 0.7s;
+}
+
+.botoes button:nth-child(2):hover {
+    background-color: #eee;
+    color: #000;
+
+}
+
+.thumb {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    display: flex;
+    gap: 20px;
+}
+
+.thumb-item {
+    width: 135px;
+    height: 200px;
+    position: relative;
+     z-index: 3;
+}
+
+.thumb-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    filter: brightness(80%);
+}
+
+.thumb-item .conteudo {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.setas {
+    display: flex;
+    position: absolute;
+    bottom: 120px;
+    left: 125px;
+    width: 300px;
+    align-items: center;
+    gap: 10px;
+}
+
+.setas button {
+    border-radius: 10px;
+    border: none;
+    padding: 12px 17px;
+    background-color: #eee4;
+    cursor: pointer;
+    color: #eee;
+    font-weight: 700;
+    font-size: 1.5em;
+   
+}
+
+.setas button:hover {
+    background-color: #eee;
+    color: #000;
+    transition: 0.7s;
+}
+
+.next .thumb {
+    animation: effectNextThumb .5s linear 1 forwards;
+}
+
+@keyframes effectNextThumb {
+    from {
+        transform: translateX(150px);
+    }
+}
+
+.next .thumb .thumb-item:nth-last-child(1) {
+    animation: effectLastThumb 0.5s linear 1 forwards;
+}
+
+@keyframes effectLastThumb {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+}
+
+.lista-item:nth-last-child(1) .titulo,
+.lista-item:nth-last-child(1) .descricao,
+.lista-item:nth-last-child(1) .botoes {
+    transform: translateY(50px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent 0.5s 1s linear 1 forwards;
+
+}
+
+@keyframes showContent {
+    to {
+        transform: translateY(0);
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+
+.lista-item:nth-last-child(1) .titulo{
+    animation-delay: 1.2s;
+}
+.lista-item:nth-last-child(1) .descricao{
+    animation-delay: 1.5s;
+}
+.lista-item:nth-last-child(1) .botoes{
+    animation-delay: 1.8s;
+}
+
+.lista-item:nth-last-child(1) img{
+    width:150px ;
+    height: 220px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    border-radius: 30px;
+    animation: showImage 0.5s linear 1 forwards ;
+}
+
+@keyframes showImage{
+    to{
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+
+
+.back .lista-item:nth-child(1) img{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: hideImagem 0.5s linear 1 forwards;
+    z-index: 2;
+}
+
+@keyframes hideImagem{
+    to{
+        width: 135px;
+        height: 200px;
+        border-radius: 10px;
+        left: 50%;
+        bottom: 50px;
+    }
+}
+@media (max-width: 768px) {
+
+    header {
+        width: 90%;
+        height: 50px;
+    }
+
+    header a {
+        margin-right: 20px;
+        font-size: 11px;
+    }
+
+    .container {
+        margin-top: -50px;
+    }
+
+    .conteudo {
+        top: 15%;
+        left: 5%;
+        right: auto;
+        width: 90%;
+        padding-right: 0;
+    }
+
+    .titulo {
+        font-size: 3.5em;
+        line-height: 1.2em;
+    }
+
+    .descricao {
+        font-size: 1.2em;
+        line-height: 1.5em;
+    }
+
+    .botoes {
+        grid-template-columns: repeat(2, 120px);
+        grid-template-rows: 45px;
+        gap: 5px;
+        margin-top: 20px;
+    }
+
+    .botoes button {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .thumb {
+        position: absolute;
+        left: 50%;
+        bottom: 25px;
+        width: max-content;
+        gap: 10px;
+        transform: translateX(-50%) scale(0.65);
+        transform-origin: bottom center;
+        z-index: 3;
+    }
+
+    .thumb-item {
+        width: 120px;
+        height: 180px;
+        flex-shrink: 0;
+    }
+
+    .setas {
+        position: absolute;
+        left: 50%;
+        bottom: 155px;
+        width: auto;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        z-index: 10;
+    }
+
+    .setas button {
+        padding: 10px 14px;
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+
+    header {
+        width: 90%;
+        height: 45px;
+        justify-content: center;
+    }
+
+    header a {
+        margin-right: 15px;
+        font-size: 10px;
+    }
+
+    header a:last-child {
+        margin-right: 0;
+    }
+
+    .container {
+        margin-top: -45px;
+    }
+
+    .conteudo {
+        top: 13%;
+        left: 5%;
+        right: auto;
+        width: 90%;
+        padding-right: 0;
+    }
+
+    .titulo {
+        font-size: 2.5em;
+        line-height: 1.1em;
+    }
+
+    .descricao {
+        font-size: 1em;
+        line-height: 1.4em;
+        margin-top: 10px;
+    }
+
+    .botoes {
+        grid-template-columns: repeat(2, 110px);
+        grid-template-rows: 42px;
+        gap: 8px;
+        margin-top: 20px;
+    }
+
+    .botoes button {
+        font-size: 9px;
+        letter-spacing: 1.5px;
+    }
+
+    .thumb {
+        position: absolute;
+        left: 50%;
+        bottom: 20px;
+        width: max-content;
+        gap: 8px;
+        transform: translateX(-50%) scale(0.45);
+        transform-origin: bottom center;
+        z-index: 3;
+    }
+
+    .thumb-item {
+        width: 135px;
+        height: 200px;
+        flex-shrink: 0;
+    }
+
+    .setas {
+        position: absolute;
+        left: 50%;
+        bottom: 120px;
+        width: auto;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        z-index: 10;
+    }
+
+    .setas button {
+        padding: 8px 12px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 350px) {
+
+    header {
+        width: 95%;
+    }
+
+    header a {
+        margin-right: 10px;
+        font-size: 9px;
+    }
+
+    .conteudo {
+        top: 12%;
+        left: 5%;
+        width: 90%;
+    }
+
+    .titulo {
+        font-size: 2.3em;
+    }
+
+    .descricao {
+        font-size: 0.95em;
+    }
+
+    .botoes {
+        grid-template-columns: repeat(2, 100px);
+        grid-template-rows: 40px;
+    }
+
+    .thumb {
+        bottom: 18px;
+        gap: 6px;
+        transform: translateX(-50%) scale(0.40);
+    }
+
+    .setas {
+        bottom: 105px;
+        gap: 5px;
+    }
+
+    .setas button {
+        padding: 7px 10px;
+        font-size: 0.9em;
+    }
+}
